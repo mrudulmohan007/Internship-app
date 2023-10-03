@@ -364,11 +364,13 @@ class DashboardPeople extends StatelessWidget {
                                 height: _mediaQuery.size.height * 0.035,
                               ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text('App\nDwnlds'),
-                                  SizedBox(
-                                    width: _mediaQuery.size.width * 0.04,
-                                  ),
+                                  Text('Down\nloads'),
+                                  // SizedBox(
+                                  //   width: _mediaQuery.size.width * 0.04,
+                                  // ),
                                   Icon(
                                     Icons.download,
                                     color: Color.fromARGB(255, 3, 11, 232),
@@ -431,6 +433,104 @@ class DashboardPeople extends StatelessWidget {
               ],
             ),
           ),
+
+          //2nd container
+          Card(
+            elevation: 1,
+            child: Container(
+              height: _mediaQuery.size.height * 0.31,
+              width: _mediaQuery.size.width * 0.9,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.black54,
+                ),
+              ),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.home),
+                    title: Text('Achu'),
+                    subtitle: Text('123423455A'),
+                    trailing: ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.check),
+                      label: Text('Current'),
+                    ),
+                  ),
+                  SizedBox(
+                    height: _mediaQuery.size.height * 0.002,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Color.fromARGB(255, 206, 20, 172),
+                              ),
+                              onPressed: () {},
+                              icon: Icon(Icons.bed),
+                              label: Text('Filled Beds : 0'),
+                            ),
+                            ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Color.fromARGB(255, 8, 201, 162),
+                              ),
+                              onPressed: () {},
+                              icon: Icon(Icons.bed),
+                              label: Text('Vacant Beds : 0'),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: _mediaQuery.size.height * 0.002,
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.people_alt),
+                    title: Text('Tenants: 0'),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize
+                          .min, // Ensure that the Row takes up minimum space
+                      children: [
+                        Icon(Icons.currency_rupee_sharp), // Your icon
+                        SizedBox(
+                          width: _mediaQuery.size.width * 0.02,
+                        ),
+                        Text('Collection: 0'), // Your text
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: _mediaQuery.size.height * 0.002,
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.emoji_people),
+                    title: Text('Leads: 0'),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize
+                          .min, // Ensure that the Row takes up minimum space
+                      children: [
+                        Icon(Icons.emoji_events),
+                        SizedBox(
+                          width: _mediaQuery.size.width * 0.02,
+                        ), // Your icon
+                        Text('Collection: 0'), // Your text
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
