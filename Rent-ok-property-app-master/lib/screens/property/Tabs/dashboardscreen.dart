@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rental_ok_app/screens/property/screen/peopleadd.dart';
+import 'package:rental_ok_app/screens/property/screen/propertyadd.dart';
 
 class DashboardTab extends StatefulWidget {
   const DashboardTab({super.key});
@@ -13,6 +15,56 @@ class _DashboardTabState extends State<DashboardTab> {
     var _mediaQuery = MediaQuery.of(context);
     bool showMore = false;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                height: _mediaQuery.size.height * 0.3,
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddPropertyPro()),
+                        );
+                      },
+                      child: Text('Add Property'),
+                    ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddPeoplePro(),
+                          ),
+                        );
+                      },
+                      child: Text('Add People'),
+                    ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Close the bottom sheet
+                      },
+                      child: Text('Exit'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+
+      //body is from here
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -375,17 +427,17 @@ class _DashboardTabState extends State<DashboardTab> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 9, right: 9),
-                  child: ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 10, 2, 235),
-                    ),
-                    onPressed: () {},
-                    icon: Icon(Icons.share),
-                    label: Text('Share my Website'),
-                  ),
-                )
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 9, right: 9),
+                //   child: ElevatedButton.icon(
+                //     style: ElevatedButton.styleFrom(
+                //       backgroundColor: Color.fromARGB(255, 10, 2, 235),
+                //     ),
+                //     onPressed: () {},
+                //     icon: Icon(Icons.share),
+                //     label: Text('Share my Website'),
+                //   ),
+                // )
               ],
             )
           ],

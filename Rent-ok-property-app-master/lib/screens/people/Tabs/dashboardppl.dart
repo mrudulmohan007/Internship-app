@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rental_ok_app/screens/people/screens/add_people.dart';
+import 'package:rental_ok_app/screens/people/screens/add_property.dart';
 
 class DashboardPeople extends StatelessWidget {
   const DashboardPeople({super.key});
@@ -7,6 +9,57 @@ class DashboardPeople extends StatelessWidget {
   Widget build(BuildContext context) {
     var _mediaQuery = MediaQuery.of(context);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                height: _mediaQuery.size.height * 0.3,
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddProperty(),
+                          ),
+                        );
+                      },
+                      child: Text('Add Property'),
+                    ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddPeople(),
+                          ),
+                        );
+                      },
+                      child: Text('Add People'),
+                    ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Close the bottom sheet
+                      },
+                      child: Text('Exit'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+
+      //body is from here
       body: Column(
         children: [
           Padding(
@@ -76,6 +129,7 @@ class DashboardPeople extends StatelessWidget {
                             width: 1.0,
                           ),
                         ),
+
                         //text and icons inside the container
                         child: Padding(
                           padding: const EdgeInsets.all(11.0),
