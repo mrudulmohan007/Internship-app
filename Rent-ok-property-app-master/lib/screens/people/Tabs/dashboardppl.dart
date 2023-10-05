@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rental_ok_app/screens/people/screens/add_people.dart';
-import 'package:rental_ok_app/screens/people/screens/add_property.dart';
 
 class DashboardPeople extends StatelessWidget {
   const DashboardPeople({super.key});
@@ -11,50 +10,10 @@ class DashboardPeople extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                height: _mediaQuery.size.height * 0.3,
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddProperty(),
-                          ),
-                        );
-                      },
-                      child: Text('Add Property'),
-                    ),
-                    SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddPeople(),
-                          ),
-                        );
-                      },
-                      child: Text('Add People'),
-                    ),
-                    SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop(); // Close the bottom sheet
-                      },
-                      child: Text('Exit'),
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
+          // Navigate to the specific screen when the FAB is pressed
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => AddPeople(),
+          ));
         },
         child: Icon(Icons.add),
       ),

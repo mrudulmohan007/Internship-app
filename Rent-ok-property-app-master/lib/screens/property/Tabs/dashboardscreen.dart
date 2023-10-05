@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rental_ok_app/screens/property/screen/peopleadd.dart';
+
 import 'package:rental_ok_app/screens/property/screen/propertyadd.dart';
 
 class DashboardTab extends StatefulWidget {
@@ -17,53 +17,13 @@ class _DashboardTabState extends State<DashboardTab> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                height: _mediaQuery.size.height * 0.3,
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddPropertyPro()),
-                        );
-                      },
-                      child: Text('Add Property'),
-                    ),
-                    SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddPeoplePro(),
-                          ),
-                        );
-                      },
-                      child: Text('Add People'),
-                    ),
-                    SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop(); // Close the bottom sheet
-                      },
-                      child: Text('Exit'),
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
+          // Navigate to the specific screen when the FAB is pressed
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => AddPropertyPro(),
+          ));
         },
         child: Icon(Icons.add),
       ),
-
       //body is from here
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
